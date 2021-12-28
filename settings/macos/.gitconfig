@@ -1,0 +1,22 @@
+[gui]
+	fontui = -family \"Lucida Grande\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Monaco -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+[merge]
+	tool = diffmerge
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	trustexitcode = true
+[guitool "External Diff"]
+	cmd = git difftool -y $FILENAME
+	noconsole = yes
+	needsfile = yes
+[guitool "Stash/pop"]
+	cmd = git stash apply
+	noconsole = yes
+[guitool "Stash/push"]
+	cmd = git stash
+	noconsole = yes

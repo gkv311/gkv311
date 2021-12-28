@@ -1,0 +1,43 @@
+[core]
+	editor = /usr/bin/kate --startanon
+
+[merge]
+	tool = diffmerge
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = /usr/local/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
+[difftool "meld"]
+	cmd = /usr/bin/meld \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	cmd = /usr/local/bin/diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	trustexitcode = true
+
+[guitool "DiffTool ≉ $FILENAME"]
+	cmd = git difftool -y $FILENAME
+	noconsole = yes
+	needsfile = yes
+[guitool "DiffTool ≉ Unstaged"]
+    cmd = git difftool --tool=meld --dir-diff
+[guitool "DiffTool ≉ Staged"]
+    cmd = git difftool --tool=meld --dir-diff --staged
+
+[guitool "Stash ⌥/Pop ⏏"]
+    cmd = git stash apply
+    noconsole = yes
+[guitool "Stash ⌥/Push ❖"]
+    cmd = git stash
+    noconsole = yes
+
+[guitool "Rebase ⎇/Rebase ⏺️ interactive"]
+	cmd = git rebase -i $REVISION
+	revprompt = yes
+[guitool "Rebase ⎇/Continue ▶️"]
+	cmd = git rebase --continue
+[guitool "Rebase ⎇/Skip ⏩"]
+	cmd = git rebase --skip
+[guitool "Rebase ⎇/Abort ⏹️"]
+	cmd = git rebase --abort
+
+[guitool "delete ✂ $FILENAME"]
+	cmd = rm $FILENAME
